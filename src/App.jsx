@@ -26,19 +26,40 @@ function App() {
     setOperador('');
   }
 
-  const calcular = (n) => {
+  const calcular = () => {
+    console.log(numero);
+    console.log(operador);
+    console.log(numero1);
+
       if(numero1 === '0'){
-        setNumero1(String(numero));
+        setNumero1(numero);
         setNum('0');
-        setOperador(n);
+        setOperador('+');
       } else {
+        resultado();
         const num = Number(numero1) + Number(numero);
         setNum(String(num));
-        //setOperador('');
+        setOperador('');
+
         console.log(numero);
         console.log(operador);
         console.log(numero1);
       }
+  }
+
+  const resultado = () => {
+    let r = 0;
+    switch (operador) {
+      case '+':
+        r = Number(numero1) + Number(numero);
+        break;
+    
+      default:
+        break;
+    }
+    setNum(String(r));
+    console.log(r);
+    //return r;
   }
 
   return (
@@ -64,8 +85,8 @@ function App() {
           <Button title='+' onClick = {() => calcular('+')}/>
           <Button title='0' onClick = {() => valor('0')}/>
           <Button title='0' onClick = {() => valor('0')}/>
-          <Button title=','/>
-          <Button title='='/>
+          <Button title=',' />
+          <Button title='=' />
         </div>
       </div>
     </div>
