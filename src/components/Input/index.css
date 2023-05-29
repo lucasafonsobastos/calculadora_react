@@ -1,0 +1,12 @@
+input {
+    height: 3rem;
+    max-width: 240px;
+    margin: 0;
+    padding: 0 1rem;
+    border: 0;
+    background-color: gray;
+    color: white;
+    font-size: larger;
+    text-transform: uppercase;
+    text-align: end;
+  }
