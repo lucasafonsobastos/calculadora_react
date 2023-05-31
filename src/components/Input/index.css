@@ -9,4 +9,5 @@ input {
     font-size: larger;
     text-transform: uppercase;
     text-align: end;
+    border-radius: 10px;
   }

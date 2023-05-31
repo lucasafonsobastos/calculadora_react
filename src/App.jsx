@@ -13,10 +13,14 @@ function App() {
     setNum(prev => `${prev === '0' ? '' : prev}${v}`);
   }
 
-  const limpar = () => {
+  const limparCE = () => {
     setNum('0');
     setNumero1('0');
     setOperador('');
+  }
+
+  const limpar = () => {
+    setNum('0');
   }
 
   const calcular = (op) => {
@@ -46,6 +50,10 @@ function App() {
             r = Number(numero1) / Number(numero);
             break;
 
+          case '%':
+            r = Number(numero1) * (Number(numero) / 100);
+            break;
+
           default:
             break;
         }
@@ -63,7 +71,7 @@ function App() {
       <div className='calc'>
         <Input value={numero} />
         <div className='but'>
-          <Button title='AC' onClick = {() => limpar()}/>
+          <Button title='CE' onClick = {() => limparCE()}/>
           <Button title='C' onClick = {() => limpar()}/>
           <Button title='%' onClick = {() => calcular('%')}/>
           <Button title='/' onClick = {() => calcular('/')}/>
@@ -79,7 +87,7 @@ function App() {
           <Button title='2' onClick = {() => valor('2')}/>
           <Button title='3' onClick = {() => valor('3')}/>
           <Button title='+' onClick = {() => calcular('+')}/>
-          <Button title='0' onClick = {() => valor('0')}/>
+          <button ></button>
           <Button title='0' onClick = {() => valor('0')}/>
           <Button title=',' />
           <Button title='=' onClick = {resultado} />
