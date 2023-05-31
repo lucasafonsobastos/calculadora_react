@@ -10,14 +10,7 @@ function App() {
   const [operador, setOperador] = useState('');
 
   const valor = (v) => {
-    if(operador === ''){
-      setNum(prev => `${prev === '0' ? '' : prev}${v}`);
-    } else {
-      //const num = numero;
-      setOperador('');
-      setNumero1(String(numero));
-      setNum(v);
-    }
+    setNum(prev => `${prev === '0' ? '' : prev}${v}`);
   }
 
   const limpar = () => {
@@ -26,40 +19,43 @@ function App() {
     setOperador('');
   }
 
-  const calcular = () => {
-    console.log(numero);
-    console.log(operador);
-    console.log(numero1);
-
+  const calcular = (op) => {
+    setOperador(op);
+    
       if(numero1 === '0'){
         setNumero1(numero);
         setNum('0');
-        setOperador('+');
+        //setOperador(op);
       } else {
-        resultado();
-        const num = Number(numero1) + Number(numero);
-        setNum(String(num));
-        setOperador('');
+        let r = 0;
 
-        console.log(numero);
-        console.log(operador);
-        console.log(numero1);
-      }
+        switch (operador) {
+          case '+':
+            r = Number(numero1) + Number(numero);
+            break;
+
+          case '-':
+            r = Number(numero1) - Number(numero);
+            break;
+            
+          case '*':
+            r = Number(numero1) * Number(numero);
+            break;
+
+          case '/':
+            r = Number(numero1) / Number(numero);
+            break;
+
+          default:
+            break;
+        }
+      setNum(String(r));
+      setNumero1('0');
+    }
   }
 
   const resultado = () => {
-    let r = 0;
-    switch (operador) {
-      case '+':
-        r = Number(numero1) + Number(numero);
-        break;
-    
-      default:
-        break;
-    }
-    setNum(String(r));
-    console.log(r);
-    //return r;
+    calcular(operador)
   }
 
   return (
@@ -86,7 +82,7 @@ function App() {
           <Button title='0' onClick = {() => valor('0')}/>
           <Button title='0' onClick = {() => valor('0')}/>
           <Button title=',' />
-          <Button title='=' />
+          <Button title='=' onClick = {resultado} />
         </div>
       </div>
     </div>
